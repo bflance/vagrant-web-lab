@@ -1,0 +1,67 @@
+- name: weblab-srv1.example.com
+  box: bento/centos-7.5
+  ip: 192.168.56.110
+  cpus: 2
+  memory: 1024
+  synced_folders:
+   - src: .
+     dest: /var/synced_folders
+  puppetcfg: nginx.pp
+
+- name: weblab-srv2.example.com
+  box: bento/centos-7.5
+  ip: 192.168.56.120
+  cpus: 2
+  memory: 1024
+  synced_folders:
+   - src: .
+     dest: /var/synced_folders
+  puppetcfg: nginx.pp
+
+- name: weblab-lb1.example.com
+  box: bento/centos-7.5
+  ip: 192.168.56.130
+  cpus: 2
+  memory: 1024
+  synced_folders:
+   - src: .
+     dest: /var/synced_folders
+  puppetcfg: haproxy.pp
+  
+
+#EXAMPLES:
+# - name: ubuntu-1904.example.com
+  # box: bento/ubuntu-19.04
+  # ip: 192.168.56.105
+  # cpus: 2
+  # memory: 2048
+  # synced_folders:
+   # - src: .
+     # dest: /var/synced_folders
+  # gui: true
+  # script: |
+    # echo
+    # echo INSTALLING UBUNTU GUI 
+    # echo
+    # sudo apt-get update -y
+    # sudo apt-get install -y xubuntu-desktop virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
+    # sudo apt-get install -y xfce4 virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
+    # sudo systemctl enable graphical.target
+    # sudo systemctl restart graphical.target
+
+# - name: box2.example.com
+#   box: bento/centos-6.9
+#   ip: 192.168.56.12
+#   cpus: 2
+#   memory: 2048 
+#   synced_folders:
+#    - src: test
+#      dest: /tmp/test
+#    - src: www
+#      dest: /var/www/html
+#      options:
+#        :create: true
+#        :owner: root
+#        :group: root
+#        :mount_options: ['dmode=0755', 'fmode=0644']
+#   ## playbook: ../../roles/ansible-oracle-java-crx/tests/test.yml
